@@ -1,5 +1,6 @@
 from flask import Flask, request, jsonify
 from sklearn.externals import joblib
+import dmm_predict
 
 app = Flask(__name__)
 
@@ -18,7 +19,10 @@ def predict():
             ml_algo = joblib.load("./randomforest_iris.pkl")
         except ValueError:
             return jsonify("Please enter a number")
-        return jsonify(ml_algo.predict(predict_data).tolist())
+        prediction = ml_algo.predict(predict_data).tolist()
+        prediction_column = 'variety'
+        dmm_predict.send_to_dmm(data, prediction, prediction_column)
+        return jsonify(prediction)
 
 if __name__ == '__main__':
     app.run(debug=True)
