@@ -19,10 +19,10 @@ def predict():
             ml_algo = joblib.load("./randomforest_iris.pkl")
         except ValueError:
             return jsonify("Please enter a number")
-        prediction = ml_algo.predict(predict_data).tolist()
+        prediction = ml_algo.predict(predict_data).tolist()[0]
         prediction_column = 'variety'
-        dmm_predict.send_to_dmm(data, prediction, prediction_column)
-        return jsonify(prediction)
+        # dmm_predict.send_to_dmm(data, prediction, prediction_column)
+        return jsonify({'variety': prediction})
 
 if __name__ == '__main__':
     app.run(debug=True)
