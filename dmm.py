@@ -104,3 +104,10 @@ def register_prediction(modelId):
 register_model()
 
 register_prediction('5b2762617e6d7631cd2b2d0c')
+
+data = {
+      "feature_columns": ["variety"],
+      "label_columns": ["sepal.length", "sepal.width", "petal.length", "petal.width"],
+      "model": "5b2762617e6d7631cd2b2d0c",
+      "prediction_data": "swagger_server/iris_predict.csv"
+}
