@@ -13,4 +13,4 @@ EXPOSE 8080
 
 ENTRYPOINT ["python"]
 
-CMD ["-m", "app.py"]
+CMD ["app.py"]
