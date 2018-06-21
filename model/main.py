@@ -86,4 +86,4 @@ print("Output:")
 print(forest.predict(t))
 
 # save the model as pickle# save
-joblib.dump(forest, 'randomforest_iris.pkl', compress=True)
+joblib.dump(forest, 'randomforest_iris.pkl', compress=True, protocol=2)
